@@ -1,0 +1,23 @@
+{
+  "API_KEY": "M4NDR1LL_API_KEY",
+  "campaigns": {
+    "campaign1": {
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ],
+      "sheet": "google_sheet_key_campaign1"
+    },
+    "campaign2": {
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3",
+        "tag4",
+        "tag5",
+      ],
+      "sheet": "google_sheet_key_campaign2"
+    }
+  }
+}
