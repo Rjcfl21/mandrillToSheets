@@ -17,7 +17,8 @@ class GoogleSheetsConfig:
             "project_id": "abcdef",
             "private_key_id": "abcdef",
             "private_key": "-----BEGIN PRIVATE KEY-----\n-----END PRIVATE KEY-----\n",
-            ....
+            ...
         }
         self.scope = scope
         self.cred_json = cred_json
+
