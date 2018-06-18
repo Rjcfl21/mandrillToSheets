@@ -1,8 +1,7 @@
 # mandrillToSheets
-
 easy to configure python3 script to grab email stats from Mandrill and push to Google Sheets.
 
-## dependencies
+## dependencies
 * `config`
 * `gspread`
 * `mandrill`
@@ -25,4 +24,5 @@ Once all the set-up is complete, it can be run as such:
 `python3 mandrillToSheets.py --campaign campaign1`
 And your sheet should populate within a minute or so with the stats.
 
-the two command line options are `--campaign` which is required, and `--today` which is optional. `--today` will grab only Today's email stats.
+the two command line options are `--campaign` which is required, and `--today` which is optional.
+ `--today` will grab only today's email stats.
