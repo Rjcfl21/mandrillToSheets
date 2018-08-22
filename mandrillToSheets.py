@@ -11,46 +11,20 @@ from config import GoogleSheetsConfig, MandrillConfig
 config = GoogleSheetsConfig()
 mandrill_config = MandrillConfig()
 
-# Google Sheets helper functions, to find first empty row
-# and append on that row
-
-
-def first_empty_row(worksheet):
-    alles = worksheet.get_all_values()
-    row_num = 0
-    consecutive = 0
-    for row in alles:
-        flag = False
-        for col in row:
-            if col != "":
-                flag = True
-                break
-        if flag:
-            consecutive = 0
-        else:
-            consecutive += 1
-        if consecutive == 2:
-            return row_num - 1
-        row_num += 1
-    return row_num
-
-
-def append_rows(worksheet, list_of_values):
-    col_count = len(list_of_values[0])
-    row_count = first_empty_row(worksheet)
-    start_cell = worksheet.get_addr_int(row_count + 1, 1)
-    end_cell = worksheet.get_addr_int(row_count + len(list_of_values), col_count)
-    rng = worksheet.range('%s:%s' % (start_cell, end_cell))
-    for cell in rng:
-        cell.value = list_of_values[cell._row - row_count - 1][cell._col - 1]
-    worksheet.update_cells(rng)
-
-
-# This is to handle the index search of the dates to remove
-# list.index(item) throws a huge error if the value is not
-# present.
 
 def find_element_in_list(element, list_element):
+    """This is to handle the index search of the dates to remove
+    list.index(item) throws a huge error if the value is not
+    present.
+
+    Args:
+        element: Object to search for in the list
+        list_element: List to search through
+
+    Returns:
+        Either the index of the item if it is present
+        in the list, else None.
+    """
     try:
         index_element = list_element.index(element)
         return index_element
@@ -106,7 +80,8 @@ if args:
                                 }, index=[0]
                                 ), ignore_index=True)
 
-    # Re-order report DataFrame as append changes the column order to alphabetical
+    # Re-order report DataFrame as append
+    # changes the column order to alphabetical
     report = report[['Date', 'Tag', 'Sent', 'Opens', 'Clicks']]
 
     # Connect to Mandrill
