@@ -1,6 +1,7 @@
 import sys
 import json
 
+
 class MandrillConfig:
     def __init__(self):
         path = 'config.json'
@@ -21,4 +22,3 @@ class GoogleSheetsConfig:
         }
         self.scope = scope
         self.cred_json = cred_json
-
